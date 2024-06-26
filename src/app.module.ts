@@ -2,12 +2,16 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
+import { EmployeeModule } from './todos/todos.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://tejasmahajan4216:OPL7O0YSjznIKFGe@waterjtesting.bcsybhs.mongodb.net/',
-    ),
+    MongooseModule.forRootAsync({
+      useFactory: async () => ({
+        uri: 'mongodb://127.0.0.1:27017/emp',
+      }),
+    }),
+    EmployeeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
