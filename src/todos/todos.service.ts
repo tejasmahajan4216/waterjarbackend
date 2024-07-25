@@ -25,4 +25,8 @@ export class EmployeeService {
   async findOne(id: string) {
     return this.employeeModel.findById(id);
   }
+
+  async put(id: string, payload: object) {
+    return this.employeeModel.updateOne({ _id: id }, payload);
+  }
 }

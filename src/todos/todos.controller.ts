@@ -19,6 +19,14 @@ export class EmployeeController {
     return this.employeeService.create(createEmployeeDto);
   }
 
+  @Put(':id')
+  update(
+    @Body() updateEmployeeDto: CreateEmployeeDto,
+    @Param('id') id: string,
+  ) {
+    return this.employeeService.put(id, updateEmployeeDto);
+  }
+
   @Get()
   findAll() {
     return this.employeeService.findAll();
